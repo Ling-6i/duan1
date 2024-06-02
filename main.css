@@ -1,0 +1,155 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Ẩn cuộn trang để không nhìn thấy phần thừa của bóng bay */
+}
+
+.background {
+    background-image: url('/img/anh-bia-background-mau-hong_035900807.jpg'); /* Đường dẫn đến ảnh nền */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    position: relative;
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+}
+
+.message {
+    background: rgba(0, 0, 0, 0.5); /* Màu nền với độ trong suốt */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1; /* Đảm bảo thông điệp nằm trên cùng */
+    transition: transform 1s ease, opacity 1s ease; /* Thêm hiệu ứng chuyển động */
+    opacity: 0; /* Ẩn khối thông điệp ban đầu */
+}
+
+.message.hidden-message {
+    opacity: 1; /* Hiển thị khối thông điệp sau 2 giây */
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+p {
+    font-size: 1.5em;
+    margin: 10px 0 0;
+}
+
+.min {
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+}
+
+.balloons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Đảm bảo bóng bay nằm phía sau thông điệp */
+    overflow: hidden; /* Ẩn phần thừa của bóng bay */
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px; /* Bắt đầu từ bên dưới trang */
+    width: 60px; /* Kích thước chiều rộng */
+    height: 80px; /* Kích thước chiều cao */
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%), 
+                radial-gradient(circle at bottom, #ff7ee5, #ff65a3); /* Màu gradient cho bóng bay với ánh sáng */
+    border-radius: 50% 50% 60% 60%; /* Thay đổi hình dạng bóng bay */
+    animation: rise 10s infinite ease-in;
+}
+
+.balloon:before {
+    content: '';
+    position: absolute;
+    top: 80px; /* Dưới cùng của bóng bay */
+    left: 50%;
+    width: 2px;
+    height: 50px;
+    background: #000; /* Màu đen cho dây bóng bay */
+    transform: translateX(-50%);
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* Thêm nhiều bóng bay với thời gian và vị trí khác nhau */
+.balloon:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%), 
+                radial-gradient(circle at bottom, #ff7ee5, #ff65a3);
+}
+
+.balloon:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%), 
+                radial-gradient(circle at bottom, #ffec65, #ffc700);
+}
+
+.balloon:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%), 
+                radial-gradient(circle at bottom, #65ff7e, #00ff65);
+}
+
+.balloon:nth-child(4) {
+    left: 70%;
+    animation-delay: 6s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%), 
+                radial-gradient(circle at bottom, #65a3ff, #007bff);
+}
+
+.balloon:nth-child(5) {
+    left: 90%;
+    animation-delay: 8s;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%), 
+                radial-gradient(circle at bottom, #d065ff, #a300ff);
+}
+
+/* CSS cho text mới */
+.hidden {
+    display: none; /* Ẩn đoạn text mới ban đầu */
+}
+
+#newText img {
+    width: 200px; /* Kích thước ảnh nhỏ hơn */
+    display: block;
+    margin: 20px auto 0; /* Canh giữa và cách phía trên một khoảng */
+}
+
+.text {
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: black;
+}
